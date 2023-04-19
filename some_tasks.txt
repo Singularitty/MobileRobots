@@ -1,0 +1,3 @@
+# S shape
+
+[("rotateleft", 45), ("forward", 10), ("rotateright", 90), ("forward", 10), ("rotateleft", 90), ("forward", 10), ("rotateright", 90), ("forward", 10), ("rotateleft", 45)]
