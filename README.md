@@ -12,6 +12,11 @@ Repo for mobile robots course
 ### ChatGPT Integration Status
 - Asks for prompt when main() is ran, and tries to execute the response from gpt3.5, sometimes it responds with stuff other than lists
 
+### Computer Vision Status
+- Detected Objects, score and rectangle position are displayed
+- App creates BT server which waits for connection to send the results
+- Connection App <-> PC doesn't work yet
+
 ### To do
 - Integrate Computer Vision
 - Implement follow behaviours
