@@ -54,10 +54,11 @@ class detection:
         if self.categories is not None or len(self.categories) > 0:
             for i, (category, _) in enumerate(self.categories):
                 if category == target_category:
-                    relative_x, relative_y = self.relative_positions[i]
-                    x = float(self.picture_dimensions[0]) * float(relative_x)
-                    return x
-        return None
+                    x_left, x_right = self.obj_dimensions[i][1], self.obj_dimensions[i][3]
+                    #relative_x, relative_y = self.relative_positions[i]
+                    x = (float(x_left) + float(x_right)) / 2 # position of the middle of the detection box
+                    return x, float(x_left), float(x_right)
+        return None, None, None
 
 def detect_objects(shared_mem: list[detection], mutex: Lock):
     
@@ -97,9 +98,12 @@ def detect_objects(shared_mem: list[detection], mutex: Lock):
                     #print("Object Dimensions",obj_dimensions)
                     #print("Relative dimensions", relative_position)
                     #print("Number of categories:", categories_number)
-                    #print(categories)
+                    #print(objs.categories)
                     
+                    #print("Picture Dimensions", picture_dimensions)
                     #print(objs.get_position_of_object("bottle"))
+                    #print("error", (480//2 - 65) - objs.get_position_of_object("bottle"))
+                    
                     
                     if not mutex.locked():
                         mutex.acquire()
@@ -114,3 +118,5 @@ def detect_objects(shared_mem: list[detection], mutex: Lock):
                 print(ex)
                 print("Connection error")
                 break
+
+#detect_objects(0,0)
