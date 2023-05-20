@@ -36,7 +36,7 @@ def connect():
             return soc
         except Exception as e:
             print("Connection not sucessfull")
-            print(e)
+            #print(e)
             sleep(1)
 
 
@@ -115,7 +115,7 @@ def detect_objects(shared_mem: list[detection], mutex: Lock):
                     soc.close()
                 except:
                     print("socket not closable")
-                print(ex)
+                #print(ex)
                 print("Connection error")
                 break
 
